@@ -2,17 +2,75 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "owner",
+                "internalType": "contract RoyaleToken",
+                "name": "_roya",
                 "type": "address"
             },
             {
-                "internalType": "address",
-                "name": "delegate",
+                "internalType": "contract USDC",
+                "name": "_usdc",
                 "type": "address"
             }
         ],
-        "name": "allowance",
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_interestPercentage",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_penaltyPercentage",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "_duration",
+                "type": "uint8"
+            }
+        ],
+        "name": "addStakeOption",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "stakeIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "claimRewards",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "depositedStakesCount",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -27,35 +85,35 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "delegate",
+                "name": "staker",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "numTokens",
+                "name": "stakeIndex",
                 "type": "uint256"
             }
         ],
-        "name": "approve",
+        "name": "getAccumulatedRewards",
         "outputs": [
             {
-                "internalType": "bool",
+                "internalType": "uint256",
                 "name": "",
-                "type": "bool"
+                "type": "uint256"
             }
         ],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [
             {
                 "internalType": "address",
-                "name": "tokenOwner",
+                "name": "staker",
                 "type": "address"
             }
         ],
-        "name": "balanceOf",
+        "name": "getStakesCount",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -68,7 +126,85 @@
     },
     {
         "inputs": [],
-        "name": "totalSupply",
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "contract RoyaleToken",
+                "name": "_roya",
+                "type": "address"
+            }
+        ],
+        "name": "setRoyaContractAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "contract USDC",
+                "name": "_usdc",
+                "type": "address"
+            }
+        ],
+        "name": "setUSDCContractAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "stakeOptions",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "stakeName",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "stakeID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "interestPercentage",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "penaltyPercentage",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "durationDays",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "stakeOptionsCount",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -82,17 +218,17 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "receiver",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
             },
             {
                 "internalType": "uint256",
-                "name": "numTokens",
+                "name": "_stakeOptionID",
                 "type": "uint256"
             }
         ],
-        "name": "transfer",
+        "name": "stakeRoya",
         "outputs": [
             {
                 "internalType": "bool",
@@ -107,28 +243,79 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "buyer",
+                "name": "",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "numTokens",
+                "name": "",
                 "type": "uint256"
             }
         ],
-        "name": "transferFrom",
+        "name": "stakes",
         "outputs": [
             {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
+                "internalType": "address",
+                "name": "staker",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "stakeID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "stakedAmount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "startTimeStamp",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "initialStakedAmount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "lastWithdrawTimestamp",
+                "type": "uint256"
             }
         ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_stakeIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawStakedRoya",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_stakeIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawStakedRoyaWithPenalty",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
     }
